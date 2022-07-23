@@ -13,13 +13,20 @@ class Table extends Model
 
     protected $fillable = ['name', 'guest_number', 'status', 'location'];
 
-    protected $casts = [
-        'status' => TableStatus::class,
-        'location' => TableLocation::class
-    ];
-
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public const STATUS = [
+        'Pending' => "Pending",
+        'Available' => "Available",
+        'Unavalaible' => "Unavalaible",
+    ];
+
+    public const LOCATION = [
+        'Front'     => 'Front',
+        'Inside'    => 'Inside',
+        'Outside' => 'Outside',
+    ];
 }

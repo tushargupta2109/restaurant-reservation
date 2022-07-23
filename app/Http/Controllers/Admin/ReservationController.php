@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Reservation;
 use App\Models\Table;
 use Carbon\Carbon;
-use App\Enums\TableStatus;
 use App\Http\Requests\ReservationStoreRequest;
 
 class ReservationController extends Controller
@@ -30,7 +29,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $tables = Table::where('status', TableStatus::Avalaiable)->get();
+        $tables = Table::where('status', Table::STATUS['Available'])->get();
         return view('admin.reservations.create', compact('tables'));
     }
 
@@ -77,7 +76,7 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
 
-        $tables = Table::where('status', TableStatus::Avalaiable)->get();
+        $tables = Table::where('status',Table::STATUS['Available'])->get();
         return view('admin.reservations.edit', compact('reservation', 'tables'));
     }
 

@@ -42,9 +42,9 @@
                             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                             <div class="mt-1">
                                 <select id="status" name="status" class="form-multiselect block w-full mt-1">
-                                    @foreach (App\Enums\TableStatus::cases() as $status)
-                                        <option value="{{ $status->value }}" @selected($table->status->value == $status->value)>
-                                            {{ $status->name }}</option>
+                                    @foreach (App\Models\Table::STATUS as $key=> $status)
+                                        <option value="{{ $key }}" @selected($table->status == $status)>
+                                            {{ $status }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -56,9 +56,9 @@
                             <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
                             <div class="mt-1">
                                 <select id="location" name="location" class="form-multiselect block w-full mt-1">
-                                    @foreach (App\Enums\TableLocation::cases() as $location)
-                                        <option value="{{ $location->value }}" @selected($table->location->value == $location->value)>
-                                            {{ $location->name }}</option>
+                                    @foreach (App\Models\Table::LOCATION as $key=> $location)
+                                        <option value="{{ $key }}" @selected($table->location == $location)>
+                                            {{ $location }}</option>
                                     @endforeach
                                 </select>
                             </div>
